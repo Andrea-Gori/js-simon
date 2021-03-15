@@ -5,8 +5,8 @@
 $(document).ready(function () {
   var numeriArray = [];
   var maxNum = 50;
-  
-
+  var arrayUtente = [];
+  var numeriIndovinati = []
 
 
 /* Creo numeri random e li metto nel tag p nel DOM */
@@ -28,10 +28,36 @@ $(document).ready(function () {
   function numeroRandom(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
   }
+
+  setTimeout(function () {
+    $('#numeri').hide();
+  },3000);
+
+  setTimeout(function () {
+    while (arrayUtente.length < 5) {
+      var numeriUtente = parseInt(prompt('Indovina i numeri'))
+      if (arrayUtente.includes(numeriUtente)) {
+        alert('ha già digitato questo numero')
+      } else {
+        arrayUtente.push(numeriUtente)
+        console.log(arrayUtente);
+        if (numeriArray.includes(numeriUtente)) {
+          numeriIndovinati.push(numeriUtente)
+        }
+        
+      }
+    }
+    $('#risultati').text('Hai indovianto: ' + numeriIndovinati.length + ' numeri! I numeri corretti sono: ' + numeriArray)
+    
+  },3500);
+
+
+
 })
 
 
-
+/* $('#risultati').text('Hai indovianto: ' + arrayUtente.length + ' numeri! I numeri corretti sono: ' + numeriArray)
+console.log(arrayUtente); */
 
 
 
